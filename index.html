@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Language" content="ru">
+        <title>Title</title>
+        <link rel="stylesheet" href="1.css">
+        <script src="code.js" defer></script>
+        <script defer>
+          function scanPort(block) {
+            scanPort.doc = function(s) {
+              return document.getElementById(s);
+            }
+            var scroll = scanPort.doc(block).offsetWidth - scanPort.doc(block).clientLeft - scanPort.doc(block).clientWidth;
+            var scroll2 = scanPort.doc(block).offsetHeight - scanPort.doc(block).clientTop * 2;
+            console.log("ширина скрола: "+scroll+"px");
+            console.log("высота скрола: "+scroll2+"px");
+          }
+          function openDivText(e) {
+            openDivText.doc = function(w) {
+              return document.getElementById(w);
+            }
+            openDivText.doc(e).style.height = openDivText.doc(e).scrollHeight+"px";
+          }
+          function gameColor() {
+            var x = (document.documentElement.clientWidth/2);
+            var y= (document.documentElement.clientHeight/2);
+            var prec = document.createElement("div");
+            prec.style.width = "5px";
+            prec.style.height = "5px";
+            prec.style.background = "red";
+            prec.style.position = "fixed";
+            prec.style.top = y+"px";
+            prec.style.left = x+"px";
+            prec.style.border = "2px solid #000";
+            document.body.appendChild(prec);
+            gameColor.off = function() {
+              document.body.removeChild(prec);
+            };
+          }
+        </script>
+    </head>
+
+    <body>
+
+        <input type="checkbox" /> Зацветить все блоки
+        <br><input type="button" value="Пример со списками" style="padding: 10px;" onclick='location.href="ulAndLi.html";' />
+        <br><input type="button" value="Галлелея" style="padding: 10px;" onclick='location.href="galley.html";' />
+        <br><input type="button" value="Расскрыть блок с текстом" style="padding: 10px;" onclick="openDivText('s');" />
+        <br><input type="button" value="перезагрузка" style="padding: 10px;" onclick='location.href="index.html";' />
+        <br><input type="button" value="вкл прицел" style="padding: 10px;" onclick="gameColor(); this.setAttribute('disabled','true'); this.nextElementSibling.nextElementSibling.removeAttribute('disabled');" />
+        <br><input type="button" disabled value="выкл прицел" style="padding: 10px;" onclick="gameColor.off(); this.setAttribute('disabled','true'); this.previousElementSibling.previousElementSibling.removeAttribute('disabled');" />
+
+        <div class="div" id="s" >
+          <br>Счётчик: <input data-count type="button" value="0"/> Счётчик2: <input data-count type="button" value="0"/>
+          <br><input id="test" type="text" />
+          <input type="button" value="получить фокус на текст поле" onclick="s.focus();"/>
+          <p>
+            x:<input id="x" type="number"/>
+            y:<input id="y" type="number"/>
+          </p>
+          <input type="range"/>
+          <br><input type="color"/>
+          <div id="field" onmousedown="return false;">
+            <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+          </div>
+          <button data-toggle-id="subscribe-mail">
+            Показать форму подписки
+          </button>
+
+          <form id="subscribe-mail" hidden>
+            Ваша почта: <input type="email">
+          </form>
+
+          <br><button data-help="ну здарово :)">
+            наведись увидь подсказку
+          </button>
+          <br><a href="https://vk.com/danil7170">мой вк</a>
+
+        </div>
+
+        <div id="s2" class="div">
+          <div class="pane">
+          <button class="remove-button">[x]</button>
+            <h3>Лошадь</h3>
+            <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+          </div>
+          <div class="pane">
+          <button class="remove-button">[x]</button>
+            <h3>Осёл</h3>
+            <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+          </div>
+          <div class="pane">
+          <button class="remove-button">[x]</button>
+            <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
+            <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
+              тёлками.
+            </p>
+          </div>
+        </div>
+
+        <div class="div"></div>
+
+        <div class="div"></div>
+
+    </body>
+
+</html>
